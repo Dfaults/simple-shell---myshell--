@@ -138,7 +138,7 @@ int Command_exec(char **args, const Redirect *Inputs,const Redirect *Outputs,int
 	else if (!strcmp(args[0],"clr")||!strcmp(args[0],"clear")) // "clear"  command
 	{       // system("clear");
 		if(output_num==0 )
-			Command_clear( );  // In Command_clear()£¬execute clear
+			Command_clear( );  // In Command_clear()ï¼Œexecute clear
 		if(args[1]|| states[1]||states[2])     //  no argument is needed after "clear"
 			Error(4,NULL,NULL,NULL,args[0]);
 	}
@@ -319,13 +319,13 @@ int Error(int errortype,char **args,const Redirect *  IOputs,const int *states, 
 <3> record the input files and output files */
 int Command_strtok(char *buf,char **args,int *states,Redirect *Inputs,Redirect *Outputs) // redirection of InPut & OutPuts
 {
-	int i,j,n,m, flag,argc,errortype;   // flag is the symbol of blank£»argc is the number of parameters(not include redirection and background process£©
+	int i,j,n,m, flag,argc,errortype;   // flag is the symbol of blankï¼›argc is the number of parameters(not include redirection and background processï¼‰
 	char c ;
 	states[0]=states[1]=states[2]=states[3]=states[4]=0;// states[0] is the symbol of background process;states[1] number of input redirection;
-	//states[2] the number of output redirection£»states[3]number of parameters£» states[4] label input redirection before keybroad input£»
+	//states[2] the number of output redirectionï¼›states[3]number of parametersï¼› states[4] label input redirection before keybroad inputï¼›
 	errortype=letter=argc=0;
 	args[0]=NULL;
-	open=NULL;// the method to open£»
+	open=NULL;// the method to openï¼›
 	flag=1;
 	i=m=n=-1;
 	while(buf[++i]&&buf[i]!='#')    // scan the command, "#" for remark
@@ -704,7 +704,7 @@ int Command_shell(FILE *inputfile,const Redirect *Outputs,const int *states) //
 	do    // /* keep reading input until "quit" command or eof of redirected input */
 	{        /* get command line from input */
 		if (inputfile==stdin&&Outputs==NULL)  ///////////////////////////////
-			fprintf(stderr,"\n Group5@Shell [%s@%s]$: ",getenv("USERNAME"),getenv("PWD"));  // write prompt
+			fprintf(stderr,"\n[%s@%s]$: ",getenv("USERNAME"),getenv("PWD"));  // write prompt
 		if (fgets(buf, MAX_BUFFER, inputfile))  // read  a  line
 		{
 			bat_num++;
@@ -810,7 +810,7 @@ int Command_help(char **args,const Redirect *Outputs,int *states)//
 		return 0;
 	}
 
-	readme=fopen(getenv("readme_path"),"r"); // while execute myshell£¬add readme_path into the environment variables in initialization phase
+	readme=fopen(getenv("readme_path"),"r"); // while execute myshellï¼Œadd readme_path into the environment variables in initialization phase
 
 	while(!feof(readme)&&fgets(buffer,MAX_BUFFER,readme))  // looking for keywords   such  as   <help dir>
 	{
@@ -842,7 +842,7 @@ int Command_bat(char **args,const Redirect *Inputs,const Redirect *Outputs, int 
 	char filepath[MAX_PATH];
 	int i=0;
 	char fullpath_batchfile[MAX_PATH] ;  //  fullpath of pervious batch file  e.g  execute myshell test.bat, test.bat include the line: myshell b.bat
-	//  fullpath_batchfile records the directory of test.bat£¬in case of dead circle  e.g  excute  myshell test.bat, test.bat includes the line: myshell test.bat
+	//  fullpath_batchfile records the directory of test.batï¼Œin case of dead circle  e.g  excute  myshell test.bat, test.bat includes the line: myshell test.bat
 	pid_t  newpid;
 	if(isbat)  // if executes from batchfile
 		fprintf(stderr,"Line %d of inputfile \"%s\": ",bat_num,batchfile);//
@@ -881,7 +881,7 @@ int Command_bat(char **args,const Redirect *Inputs,const Redirect *Outputs, int 
 		fprintf(stderr,"Turn to execute the commands in batch file \"%s\":\n",batchfile);
 
 		if( ! output_num)//
-			Command_shell(inputfile,NULL,states);  //read command lines from Command_shell()£¬analyse and execute£¬put the result to OutPuts
+			Command_shell(inputfile,NULL,states);  //read command lines from Command_shell()ï¼Œanalyse and executeï¼Œput the result to OutPuts
 
 		else
 			for(i=0;i<states[2];i++)//
@@ -919,7 +919,7 @@ int Command_bat(char **args,const Redirect *Inputs,const Redirect *Outputs, int 
 	}
 
 	else//Shell Producers: version 5.2
-		fprintf(stdout,"Produced by: Jean Luis Feliciano & Jesus Avalo\n Group 5\n");
+		fprintf(stdout,"\nProduced by: Dfaults\n");
 
 	return 0;
 }
