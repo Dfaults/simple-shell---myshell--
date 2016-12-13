@@ -1,7 +1,7 @@
 /*
 Title: Final Shell
-name: Jean Luis Feliciano
-Student Number: P00427598
+name: Dfaults
+
 */ 
 
 #include "myshell.h" 
@@ -46,7 +46,7 @@ int main (int argc, char *argv[])
 			strcat(buf,argv[i]);
 			strcat(buf,"  ");
 		}
-		Execute(buf);// execute this command(bat)£¬  
+		Execute(buf);// execute this command(bat)Â£Â¬  
 	}
 	
 	else  // if user input ./myshell
